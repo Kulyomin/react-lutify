@@ -8,6 +8,11 @@ import { IoLibrary } from "react-icons/io5";
 import { MdSpaceDashboard } from "react-icons/md";
 import logo from "../../assets/logo.png";
 
+const removeToken = () => {
+  localStorage.clear();
+  window.location.reload();
+}
+
 export default function Sidebar() {
   return (
     <div className="sidebar-container">
@@ -23,7 +28,7 @@ export default function Sidebar() {
         />
         <SidebarButton title="Library" to="/" icon={<IoLibrary />} />
       </div>
-      <SidebarButton title="Sign Out" to="" icon={<FaSignOutAlt />} />
+      <SidebarButton to="" action={removeToken} title="Sign Out" icon={<FaSignOutAlt/>} />
     </div>
   );
 }

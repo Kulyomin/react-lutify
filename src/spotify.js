@@ -20,4 +20,8 @@ export const setClientToken = (token) => {
   });
 };
 
+export const removeToken = (token) => { // export function from module 
+  localStorage.removeItem(token);
+}
+
 export default apiClient;

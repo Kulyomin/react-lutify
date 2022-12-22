@@ -11,7 +11,7 @@
 .playlist-card {
    position: relative;
    width: 15%;
-   height: 35%;
+   height: min-content;
    border-radius: 20px;
    background-color: rgb(30, 42, 62);
    border: 1px solid rgba(54, 69, 98, 0.18);
@@ -23,6 +23,7 @@
          rgba(54, 69, 98, 0) 100%);
    transition: all 0.2s ease;
    cursor: pointer;
+   min-height: 220px;
 }
 
 .playlist-card:hover {
@@ -53,6 +54,7 @@
 }
 
 .playlist-subtitle {
+   
    font-weight: 400;
    font-size: 12px;
    margin: 0px;
