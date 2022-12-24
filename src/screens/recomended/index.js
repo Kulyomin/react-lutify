@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from "react";
-import APIKit from "../../spotify";
 import { IconContext } from "react-icons";
 import { AiFillPlayCircle } from "react-icons/ai";
-import "./library.css";
+import "../library/library.css";
 import { useNavigate } from "react-router-dom";
+import apiClient from "../../spotify";
 
-export default function Library() {
+export default function Recomended() {
    // Состояние плейлистов(playlist - плейлисты, setplaylist - назначить плейлист в массив playlist)
-   const [playlists, setPlaylists] = useState(null);
+   const [featured, setFeatured] = useState([]);
 
-   // С помощью useEffect получаем плейлисты из личного профиля Sporify
+   // Передаем рекомундуемые плейлисты через UseEffect используя ID артиста
    useEffect(() => {
-      APIKit.get("me/playlists").then(function (response) {
-         setPlaylists(response.data.items);
-      });
+      // Рекомендуемы плейлисты для пользователя
+      apiClient
+         .get(`/browse/featured-playlists`)
+         .then((res) => {
+            const a = res.data?.playlists.items.slice(0, 10);
+            setFeatured(a);
+         })
+         .catch((err) => console.error(err));
    }, []);
 
    // useNavigate - Хук навигации для перемещния между страницами
@@ -27,7 +32,7 @@ export default function Library() {
    return (
       <div className="screen-container">
          <div className="library-body">
-            {playlists?.map((playlist) => (
+            {featured?.map((playlist) => (
                <div
                   className="playlist-card"
                   key={playlist.id}
@@ -49,5 +54,5 @@ export default function Library() {
             ))}
          </div>
       </div>
-   );
+   )
 }

@@ -22,8 +22,8 @@ export default function Sidebar() {
         <SidebarButton title="Trending" to="/trending" icon={<FaGripfire />} />
         <SidebarButton title="Player" to="/player" icon={<FaPlay />} />
         <SidebarButton
-          title="Favorites"
-          to="/favorites"
+          title="Recomended"
+          to="/recomended"
           icon={<MdFavorite />}
         />
         <SidebarButton title="Library" to="/" icon={<IoLibrary />} />
