@@ -14,7 +14,7 @@ export default function Player() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (location.state) {
+    if (location.state) { // Передача id в player
       apiClient
         .get("playlists/" + location.state?.id + "/tracks")
         .then((res) => {
